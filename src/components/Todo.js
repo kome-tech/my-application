@@ -22,23 +22,15 @@ const initialTodo = {
   priority: "",
 };
 
-const Todo = (props) => {
-  const [state, setState] = useState(props);
-  const todos = state.todos;
+const Todo = () => {
+  const [todos, dispatch] = useReducer(todoReducer, []);
 
   return (
     <>
-      <CreateTasks setState={setState} todoList={todos} />
+      <CreateTasks dispatch={dispatch} todoList={todos} />
       <TodoList todos={todos} />
     </>
   );
-};
-
-Todo.defaultProps = {
-  todos: [
-    { task: "demo task1", content: "study AWS pro.", priority: "High" },
-    { task: "demo task2", content: "read books.", priority: "Low" },
-  ],
 };
 
 const TodoList = (props) => {
@@ -74,14 +66,18 @@ const TodoList = (props) => {
 
 const CreateTasks = (props) => {
   const [todo, setTodo] = useState(initialTodo);
-  const todoList = props.todoList;
   const task = todo.task;
   const content = todo.content;
   const priority = todo.priority;
 
   const addTask = () => {
-    todoList.push({ task: task, content: content, priority: priority });
-    props.setState({ todos: todoList });
+    const action = {
+      type: "CREATE_TASK",
+      task,
+      content,
+      priority,
+    };
+    props.dispatch(action);
   };
 
   return (
