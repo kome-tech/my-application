@@ -7,15 +7,17 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
-const TodoList = (props) => {
-  const todos = props.todos;
+
+import { DELETE_TASK } from "../actions/todo_action.js";
+const TodoList = ({ dispatch, todoList }) => {
+  const todos = todoList;
 
   const handleClickDelete = (id) => {
     const action = {
-      type: "DELETE_TASK",
+      type: DELETE_TASK,
       id,
     };
-    props.dispatch(action);
+    dispatch(action);
   };
   return (
     <div>

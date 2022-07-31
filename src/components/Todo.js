@@ -13,8 +13,8 @@ const Todo = () => {
   return (
     <>
       <AlertDialog />
-      <CreateTasks dispatch={dispatch} todoList={todos} />
-      <TodoList dispatch={dispatch} todos={todos} />
+      <CreateTasks dispatch={dispatch} />
+      <TodoList dispatch={dispatch} todoList={todos} />
     </>
   );
 };

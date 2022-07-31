@@ -7,13 +7,15 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 
+import { CREATE_TASK} from "../actions/todo_action";
+
 const initialTodo = {
   task: "",
   content: "",
   priority: "",
 };
 
-const CreateTasks = (props) => {
+const CreateTasks = ({ dispatch }) => {
   const [todo, setTodo] = useState(initialTodo);
   const task = todo.task;
   const content = todo.content;
@@ -23,12 +25,12 @@ const CreateTasks = (props) => {
 
   const addTask = () => {
     const action = {
-      type: "CREATE_TASK",
+      type: CREATE_TASK,
       task,
       content,
       priority,
     };
-    props.dispatch(action);
+    dispatch(action);
     setTodo(initialTodo);
   };
 
