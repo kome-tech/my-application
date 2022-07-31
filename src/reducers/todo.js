@@ -6,7 +6,7 @@ import { CREATE_TASK, DELETE_TASK } from "../actions/todo_action";
 //     priority: 'Low'
 // }
 
-const todo_reducer = (state = [], action) => {
+const todo = (state = [], action) => {
   switch (action.type) {
     case CREATE_TASK:
       const todo = {
@@ -24,4 +24,4 @@ const todo_reducer = (state = [], action) => {
   }
 };
 
-export default todo_reducer;
+export default todo;

@@ -5,7 +5,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import alert_dialog_reducer from "../../reducers/alert_dialog_reducer";
+import alert_dialog_reducer from "../../reducers/alertDialog";
 
 export default function AlertDialog() {
   const [state, dispatch] = useReducer(alert_dialog_reducer, { open: false, isConfirmed: false });

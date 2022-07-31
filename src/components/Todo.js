@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useReducer } from "react";
 
-import todoReducer from "../reducers/todo_reducer";
+import reducers from "../reducers/index";
 
 import TodoContext from "../contexts/TodoContext";
 
@@ -9,11 +9,13 @@ import CreateTasks from "./CreateTasks";
 import TodoList from "./TodoList";
 
 const Todo = () => {
-  const [todoList, dispatch] = useReducer(todoReducer, []);
-  //   const [state, dispatch1] = useReducer(alert_dialog_reducer, { open: false, isConfirmed: false });
+  const initialState = {
+    todo: [],
+  }
+  const [state, dispatch] = useReducer(reducers, initialState);
 
   return (
-    <TodoContext.Provider value={{ todoList, dispatch }}>
+    <TodoContext.Provider value={{ state, dispatch }}>
       <AlertDialog />
       <CreateTasks />
       <TodoList />

@@ -13,8 +13,8 @@ import TodoItem from "./TodoItem.js";
 import TodoContext from "../contexts/TodoContext";
 
 const TodoList = () => {
-  const { todoList } = useContext(TodoContext);
-  const todos = todoList;
+  const { state } = useContext(TodoContext);
+  const todos = state.todo;
 
   return (
     <div>
