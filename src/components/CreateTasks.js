@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import Button from "@mui/material/Button";
 import InputLabel from "@mui/material/InputLabel";
@@ -7,7 +7,9 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 
-import { CREATE_TASK} from "../actions/todo_action";
+import { CREATE_TASK } from "../actions/todo_action";
+
+import TodoContext from "../contexts/TodoContext";
 
 const initialTodo = {
   task: "",
@@ -15,7 +17,8 @@ const initialTodo = {
   priority: "",
 };
 
-const CreateTasks = ({ dispatch }) => {
+const CreateTasks = () => {
+  const { dispatch } = useContext(TodoContext);
   const [todo, setTodo] = useState(initialTodo);
   const task = todo.task;
   const content = todo.content;

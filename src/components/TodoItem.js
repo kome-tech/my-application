@@ -1,3 +1,5 @@
+import React, { useContext } from "react";
+
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import IconButton from "@mui/material/IconButton";
@@ -5,7 +7,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 import { DELETE_TASK } from "../actions/todo_action.js";
 
-const TodoItems = ({ item, dispatch }) => {
+import TodoContext from "../contexts/TodoContext";
+
+const TodoItem = ({ item }) => {
+  const { dispatch } = useContext(TodoContext);
   const handleClickDelete = (id) => {
     const action = {
       type: DELETE_TASK,
@@ -31,4 +36,4 @@ const TodoItems = ({ item, dispatch }) => {
   );
 };
 
-export default TodoItems;
+export default TodoItem;

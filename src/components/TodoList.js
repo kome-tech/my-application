@@ -1,3 +1,5 @@
+import React, { useContext } from "react";
+
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -6,8 +8,12 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-import TodoItems from "./TodoItems.js";
-const TodoList = ({ dispatch, todoList }) => {
+import TodoItem from "./TodoItem.js";
+
+import TodoContext from "../contexts/TodoContext";
+
+const TodoList = () => {
+  const { todoList } = useContext(TodoContext);
   const todos = todoList;
 
   return (
@@ -25,7 +31,7 @@ const TodoList = ({ dispatch, todoList }) => {
           </TableHead>
           <TableBody>
             {todos.map((todo, index) => {
-              return <TodoItems key={index} item={todo} dispatch={dispatch} />;
+              return <TodoItem key={index} item={todo} />;
             })}
           </TableBody>
         </Table>
