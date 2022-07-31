@@ -5,9 +5,9 @@ const alert_dialog_reducer = (
   switch (action.type) {
     case "DIALOG_OPNE":
       return { ...state, open: true };
-    case "AGREEMENT":
+    case "DIALOG_AGREEMENT":
       return { open: false, isConfirmed: true };
-    case "DISAGREEMENT":
+    case "DIALOG_DISAGREEMENT":
       return { open: false, isConfirmed: false };
     default:
       return state;

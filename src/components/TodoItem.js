@@ -5,18 +5,24 @@ import TableRow from "@mui/material/TableRow";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-import { DELETE_TASK } from "../actions/index.js";
+import { DELETE_TASK, DELETE_OPERATION_LOG, DIALOG_OPNE } from "../actions/index.js";
 
 import TodoContext from "../contexts/TodoContext";
 
+import { timeCurrentIso8601 } from "../util/util";
+
 const TodoItem = ({ item }) => {
-  const { dispatch } = useContext(TodoContext);
+  const { state, dispatch } = useContext(TodoContext);
   const handleClickDelete = (id) => {
-    const action = {
+    dispatch({
       type: DELETE_TASK,
       id,
-    };
-    dispatch(action);
+    });
+    dispatch({
+      type: DELETE_OPERATION_LOG,
+      description: "DELETE TODO",
+      operationAt: timeCurrentIso8601(),
+    });
   };
   return (
     <TableRow>

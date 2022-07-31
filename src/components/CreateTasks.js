@@ -6,10 +6,17 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
+import { Box } from "@mui/material";
 
-import { CREATE_TASK } from "../actions";
+import {
+  CREATE_TASK,
+  ADD_OPERATION_LOG,
+  DELETE_ALL_OPERATION_LOG,
+} from "../actions";
 
 import TodoContext from "../contexts/TodoContext";
+
+import { timeCurrentIso8601 } from "../util/util";
 
 const initialTodo = {
   task: "",
@@ -27,36 +34,40 @@ const CreateTasks = () => {
   const unCreatable = task === "" || content === "" || priority === "";
 
   const addTask = () => {
-    const action = {
+    dispatch({
       type: CREATE_TASK,
       task,
       content,
       priority,
-    };
-    dispatch(action);
+    });
+    dispatch({
+      type: ADD_OPERATION_LOG,
+      description: "ADD TODO",
+      operationAt: timeCurrentIso8601(),
+    });
     setTodo(initialTodo);
   };
 
   return (
     <div>
       <h4>Create Task</h4>
-      <div>
+      <Box sx={{ m: 2 }}>
         <TextField
           label="task"
           variant="outlined"
           value={task}
           onChange={(e) => setTodo({ ...todo, task: e.target.value })}
         />
-      </div>
-      <div>
+      </Box>
+      <Box sx={{ m: 2 }}>
         <TextField
           label="content"
           variant="outlined"
           value={content}
           onChange={(e) => setTodo({ ...todo, content: e.target.value })}
         />
-      </div>
-      <div>
+      </Box>
+      <Box sx={{ m: 2 }}>
         <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
           <InputLabel id="select-priority">Priority</InputLabel>
           <Select
@@ -71,12 +82,13 @@ const CreateTasks = () => {
             <MenuItem value={"Low"}>Low</MenuItem>
           </Select>
         </FormControl>
-      </div>
-      <div>
+      </Box>
+      <Box sx={{ m: 2 }}>
         <Button
           variant="contained"
           onClick={() => addTask()}
           disabled={unCreatable}
+          sx={{ m: 2 }}
         >
           ADD Task
         </Button>
@@ -84,10 +96,11 @@ const CreateTasks = () => {
           variant="contained"
           color="error"
           onClick={() => setTodo(initialTodo)}
+          sx={{ m: 2 }}
         >
           Reset
         </Button>
-      </div>
+      </Box>
     </div>
   );
 };

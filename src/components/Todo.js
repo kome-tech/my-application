@@ -4,9 +4,9 @@ import reducers from "../reducers/index";
 
 import TodoContext from "../contexts/TodoContext";
 
-import AlertDialog from "./util/AlertDialog";
 import CreateTasks from "./CreateTasks";
 import TodoList from "./TodoList";
+import OperationLogList from "./OperationLogList";
 
 const Todo = () => {
   const initialState = {
@@ -19,9 +19,9 @@ const Todo = () => {
 
   return (
     <TodoContext.Provider value={{ state, dispatch }}>
-      <AlertDialog />
       <CreateTasks />
       <TodoList />
+      <OperationLogList />
     </TodoContext.Provider>
   );
 };
