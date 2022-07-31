@@ -1,4 +1,4 @@
-import { ADD_OPERATION_LOG, DELETE_OPERATION_LOG, DELETE_ALL_OPERATION_LOG } from "../actions/index";
+import { ADD_OPERATION_LOG, DELETE_OPERATION_LOG, DELETE_ALL_OPERATION_LOG } from "../../actions/index";
 
 const operationLogs = (state = [], action) => {
   const operationLog = {

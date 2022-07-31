@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import todo from "./todo";
-import alertDialog from "./alertDialog";
-import operationLogs from "./operationLogs";
+import todo from "./modules/todo";
+import alertDialog from "./modules/alertDialog";
+import operationLogs from "./modules/operationLogs";
 
 export default combineReducers({ todo, alertDialog, operationLogs });

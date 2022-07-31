@@ -1,4 +1,4 @@
-import { CREATE_TASK, DELETE_TASK } from "../actions";
+import { CREATE_TASK, DELETE_TASK } from "../../actions";
 // action = {
 //     type: 'CREATE_TASK',
 //     task: '買い物',
