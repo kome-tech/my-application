@@ -7,7 +7,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 
-import { CREATE_TASK } from "../actions/todo_action";
+import { CREATE_TASK } from "../actions";
 
 import TodoContext from "../contexts/TodoContext";
 

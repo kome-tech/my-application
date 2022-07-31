@@ -5,7 +5,7 @@ import TableRow from "@mui/material/TableRow";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-import { DELETE_TASK } from "../actions/todo_action.js";
+import { DELETE_TASK } from "../actions/index.js";
 
 import TodoContext from "../contexts/TodoContext";
 

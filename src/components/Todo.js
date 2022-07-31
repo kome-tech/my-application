@@ -11,8 +11,11 @@ import TodoList from "./TodoList";
 const Todo = () => {
   const initialState = {
     todo: [],
+    alertDialog: { open: false, isConfirmed: false },
+    operationLogs: [],
   }
   const [state, dispatch] = useReducer(reducers, initialState);
+  console.log(state);
 
   return (
     <TodoContext.Provider value={{ state, dispatch }}>
