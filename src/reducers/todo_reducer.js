@@ -16,6 +16,8 @@ const todo_reducer = (state = [], action) => {
       const length = state.length;
       const id = length === 0 ? 1 : state[length - 1].id + 1;
       return [...state, { id: id, ...todo }];
+    case "DELETE_TASK":
+      return state.filter(item => item.id !== action.id);
     default:
       return state;
   }
