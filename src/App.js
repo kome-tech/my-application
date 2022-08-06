@@ -1,9 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
 import MainMenu from "./components/MainMenu";
 import Counter from "./components/Counter";
 import Todo from "./components/Todo";
 
 const App = () => {
+  const state = useSelector((state) => state);
+  console.log(state);
   return (
     <BrowserRouter>
       <Routes>
